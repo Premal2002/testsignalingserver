@@ -57,44 +57,17 @@ function generateCoturnCredentials(username, secret, expiryHours = 24) {
   return { turnUsername, credential, expiryDate };
 }
 
-// Strategy 3: Static fallback — multiple free TURN providers
-// NOTE: These are PUBLIC free servers — unreliable for production
-// Get a proper TURN: sign up free at https://www.metered.ca/
+// Strategy 3: Static fallback — OpenRelay only (Metered.ca public free TURN)
 function getStaticTurnServers() {
   return [
     { urls: "stun:stun.l.google.com:19302" },
     { urls: "stun:stun1.l.google.com:19302" },
-    // --- Provider 1: Metered open relay (TCP 443 — penetrates most WiFi firewalls) ---
     {
       urls: [
-        "turn:openrelay.metered.ca:443?transport=tcp",  // TCP 443 — best for WiFi
+        "turn:openrelay.metered.ca:443?transport=tcp", // TCP 443 — best for WiFi firewalls
         "turn:openrelay.metered.ca:443",
         "turn:openrelay.metered.ca:80",
-      ],
-      username: "openrelayproject",
-      credential: "openrelayproject",
-    },
-    // --- Provider 2: relay.metered.ca (different endpoint, same provider) ---
-    {
-      urls: [
-        "turn:relay.metered.ca:443?transport=tcp",
-        "turn:relay.metered.ca:443",
-        "turn:relay.metered.ca:80",
-      ],
-      username: "openrelayproject",
-      credential: "openrelayproject",
-    },
-    // --- Provider 3: numb.viagenie.ca ---
-    {
-      urls: "turn:numb.viagenie.ca:3478",
-      username: "webrtc@live.com",
-      credential: "muazkh",
-    },
-    // --- Provider 4: stun.relay.metered.ca ---
-    {
-      urls: [
-        "turn:stun.relay.metered.ca:443?transport=tcp",
-        "turn:stun.relay.metered.ca:443",
+        "turn:openrelay.metered.ca:3478",
       ],
       username: "openrelayproject",
       credential: "openrelayproject",
