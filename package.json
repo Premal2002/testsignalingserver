@@ -1,0 +1,41 @@
+{
+  "name": "aura-matrimony",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "signaling": "node signaling-server.js",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "clean": "cmd /c \"rmdir /s /q .next 2>nul & echo Cleaned .next\"",
+    "clean:all": "cmd /c \"rmdir /s /q .next 2>nul & rmdir /s /q node_modules 2>nul & del /f package-lock.json 2>nul & echo Full clean done\"",
+    "fresh": "npm run clean:all && npm install",
+    "dev:clean": "npm run clean && next dev",
+    "build:clean": "npm run clean && next build"
+  },
+  "dependencies": {
+    "@mediapipe/face_mesh": "^0.4.1633559619",
+    "@supabase/supabase-js": "^2.43.4",
+    "dotenv": "^16.3.1",
+    "encoding": "^0.1.13",
+    "face-api.js": "^0.22.2",
+    "firebase": "^12.11.0",
+    "next": "14.2.3",
+    "razorpay": "^2.9.6",
+    "react": "^18",
+    "react-dom": "^18",
+    "resend": "^3.2.0",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
